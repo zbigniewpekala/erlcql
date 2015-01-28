@@ -80,7 +80,6 @@
 -define(PREPARED_ETS_NAME, erlcql_prepared).
 -define(PREPARED_ETS_OPTS, [set, private,
                             {read_concurrency, true}]).
-
 -record(backoff, {
           start :: pos_integer(),
           max :: pos_integer() | infinity,
@@ -416,7 +415,7 @@ expand_prepared(ETS, [{Name, Values} | Qs], Acc) when is_atom(Name) ->
 -spec maybe_create_prepared_ets(proplist()) -> ets().
 maybe_create_prepared_ets(Opts) ->
     New = fun() -> ets:new(?PREPARED_ETS_NAME, ?PREPARED_ETS_OPTS) end,
-    get_opt(prepared_statements_ets_tid, Opts, New).
+    get_opt(?OPTION_PRE_PREPARED_ETS, Opts, New).
 
 -spec event_fun(event_fun() | pid()) -> event_fun().
 event_fun(Fun) when is_function(Fun) ->
