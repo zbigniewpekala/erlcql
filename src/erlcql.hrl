@@ -202,3 +202,5 @@
 -define(NOTICE(Format), ?NOTICE(Format, [])).
 -define(INFO(Format), ?INFO(Format, [])).
 -define(DEBUG(Format), ?DEBUG(Format, [])).
+
+-define(OPTION_PRE_PREPARED_ETS, prepared_statements_ets_tid).
