@@ -168,7 +168,7 @@ try_connect(#state{database = {Host, Port},
     ?DEBUG("Trying to connect to ~p:~p", [Host, Port]),
     case gen_tcp:connect(Host, Port, [{keepalive, Keepalive} | ?TCP_OPTS]) of
         {ok, Socket} ->
-            ?INFO("Connected to ~p:~p", [Host, Port]),
+            ?DEBUG("Connected to ~p:~p", [Host, Port]),
             State2 = State#state{socket = Socket},
             case init_connection(State2) of
                 {ok, State3} ->
@@ -234,7 +234,7 @@ startup(reconnect, #state{backoff = Backoff,
     ?DEBUG("Trying to connect to ~p:~p", [Host, Port]),
     case gen_tcp:connect(Host, Port, [{keepalive, Keepalive} | ?TCP_OPTS]) of
         {ok, Socket} ->
-            ?INFO("Connected to ~p:~p", [Host, Port]),
+            ?INFO("Reconnecting to ~p:~p", [Host, Port]),
             Backoff2 = backoff_succeed(Backoff),
             State2 = State#state{socket = Socket,
                                  backoff = Backoff2},
