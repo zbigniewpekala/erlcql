@@ -1,6 +1,6 @@
 {application, erlcql,
  [{description, "Cassandra native protocol CQL client"},
-  {vsn, "0.3.1"},
+  {vsn, "0.3.2"},
   {registered, []},
   {applications, [kernel,
                   stdlib,
