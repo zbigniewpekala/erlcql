@@ -234,7 +234,7 @@ startup(reconnect, #state{backoff = Backoff,
     ?DEBUG("Trying to connect to ~p:~p", [Host, Port]),
     case gen_tcp:connect(Host, Port, [{keepalive, Keepalive} | ?TCP_OPTS]) of
         {ok, Socket} ->
-            ?INFO("Reconnecting to ~p:~p", [Host, Port]),
+            ?DEBUG("Reconnecting to ~p:~p", [Host, Port]),
             Backoff2 = backoff_succeed(Backoff),
             State2 = State#state{socket = Socket,
                                  backoff = Backoff2},
